@@ -96,13 +96,13 @@ const Header = () => {
 
                     <div className="headerSearchItem">
                         <ImMan className="headerIcon" />
-                        <span className="headerSearchText">{`${options.adult} adult - ${options.children} children - ${options.room} room`}</span>
+                        <span className="headerSearchText" onClick={()=> setOpenOptions(!openOptions)}>{`${options.adult} adult - ${options.children} children - ${options.room} room`}</span>
 
-                        <div className="options">
+                        {openOptions && <div className="options">
                             <div className="optionItem">
                                 <span className="optionText">Adult</span>
                                 <div className="optionCounter">
-                                <button className="optionCounterButton" onClick={()=>handleOption("adult", "d")}>-</button>
+                                <button disabled={options.adult <=0 } className="optionCounterButton" onClick={()=>handleOption("adult", "d")}>-</button>
                                 <span className="optionCounterNumber">{options.adult}</span>
                                 <button className="optionCounterButton" onClick={()=>handleOption("adult", "i")}>+</button>
                                 </div>
@@ -111,7 +111,7 @@ const Header = () => {
                             <div className="optionItem">
                                 <span className="optionText">Children</span>
                                 <div className="optionCounter">
-                                <button className="optionCounterButton" onClick={()=>handleOption("children", "d")}>-</button>
+                                <button disabled={options.children <=0 } className="optionCounterButton" onClick={()=>handleOption("children", "d")}>-</button>
                                 <span className="optionCounterNumber">{options.children}</span>
                                 <button className="optionCounterButton" onClick={()=>handleOption("children", "i")}>+</button>
                                 </div>
@@ -120,12 +120,12 @@ const Header = () => {
                             <div className="optionItem">
                                 <span className="optionText">Room</span>
                                 <div className="optionCounter">
-                                <button className="optionCounterButton" onClick={()=>handleOption("room", "d")}>-</button>
+                                <button disabled={options.room <=0 } className="optionCounterButton" onClick={()=>handleOption("room", "d")}>-</button>
                                 <span className="optionCounterNumber">{options.room}</span>
                                 <button className="optionCounterButton" onClick={()=>handleOption("room", "i")}>+</button>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                     </div>
 
                     <div className="headerSearchItem">
