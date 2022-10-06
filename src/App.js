@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/home/Home';
 import Hotel from './pages/hotel/Hotel';
-import List from './pages/Hotellist/HotelList';
+import HotelList from './pages/Hotellist/HotelList';
 
 // React Date range styling
 import 'react-date-range/dist/styles.css'; // main css file
@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home/>}></Route>
-      <Route path='/hotels' element={<List/>}></Route>
+      <Route path='/hotels' element={<HotelList/>}></Route>
       <Route path='/hotels/:id' element={<Hotel/>}></Route>
     </Routes>
     </BrowserRouter>
