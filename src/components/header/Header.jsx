@@ -4,12 +4,14 @@ import { ImMan } from 'react-icons/im';
 import { useState } from 'react';
 import { DateRange } from 'react-date-range';
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
 // import Option from "./Option";
 
 
 const Header = ({type}) => {
 
     const [showDate, setShowDate] = useState(false)
+    const [destination, setDestination] = useState("")
     const [date, setDate] = useState([
         {
             startDate: new Date(),
@@ -25,6 +27,8 @@ const Header = ({type}) => {
         children: 0,
         room: 1,
     });
+
+    const navigate = useNavigate()
 
     /*
     const displayDate = ()=> {
@@ -42,6 +46,10 @@ const Header = ({type}) => {
             [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
         };
         })
+    }
+
+    const handleSearch = ()=> {
+        navigate("/hotels", {state: { destination, date, options }})
     }
 
     return (
@@ -81,7 +89,12 @@ const Header = ({type}) => {
                 <div className="headerSearch">
                     <div className="headerSearchItem">
                         <FaBed className="headerIcon" />
-                        <input type="text" placeholder="Where are you going?" className="headerSearchInput" />
+                        <input 
+                        type="text" 
+                        placeholder="Where are you going?" 
+                        className="headerSearchInput" 
+                        onChange={(e)=> setDestination(e.target.value)}
+                        />
                     </div>
 
                     <div className="headerSearchItem">
@@ -131,7 +144,7 @@ const Header = ({type}) => {
                     </div>
 
                     <div className="headerSearchItem">
-                        <button className="headerBtn">Search</button>
+                        <button className="headerBtn" onClick={handleSearch}>Search</button>
                     </div>
                 </div>
                 </>}
